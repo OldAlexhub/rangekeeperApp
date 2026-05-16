@@ -242,11 +242,38 @@ export function SettingsScreen() {
           )}
         </Card>
 
-        {/* Data */}
-        <Text style={styles.sectionLabel}>Data</Text>
+        {/* Vehicles */}
+        <Text style={styles.sectionLabel}>Vehicles</Text>
         <Card style={styles.card}>
-          <TouchableOpacity style={styles.linkRow}>
-            <Text style={styles.linkText}>Vehicles: {vehicles.length}</Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Vehicles')}
+            style={styles.linkRow}>
+            <View>
+              <Text style={styles.linkText}>Manage Vehicles</Text>
+              <Text style={styles.linkSub}>{vehicles.length} vehicle{vehicles.length !== 1 ? 's' : ''} saved</Text>
+            </View>
+            <Text style={styles.linkChevron}>›</Text>
+          </TouchableOpacity>
+          <View style={styles.divider} />
+          <TouchableOpacity
+            onPress={() => navigation.navigate('VehicleForm', {})}
+            style={styles.linkRow}>
+            <Text style={styles.linkText}>Add New Vehicle</Text>
+            <Text style={styles.linkChevron}>›</Text>
+          </TouchableOpacity>
+        </Card>
+
+        {/* Export */}
+        <Text style={styles.sectionLabel}>Export Data</Text>
+        <Card style={styles.card}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Reports')}
+            style={styles.linkRow}>
+            <View>
+              <Text style={styles.linkText}>Reports & Export</Text>
+              <Text style={styles.linkSub}>CSV, JSON, or text summary</Text>
+            </View>
+            <Text style={styles.linkChevron}>›</Text>
           </TouchableOpacity>
         </Card>
 
@@ -378,6 +405,7 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.xs,
   },
   linkText: { ...Typography.body, color: Colors.textPrimary },
+  linkSub: { ...Typography.caption, color: Colors.textMuted, marginTop: 1 },
   linkChevron: { ...Typography.h3, color: Colors.textMuted },
   divider: { height: 1, backgroundColor: Colors.border, marginVertical: Spacing.xs },
   privacySummary: { gap: 4 },

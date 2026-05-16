@@ -88,14 +88,13 @@ export type RootStackParamList = {
   VehicleForm: { vehicleId?: string };
   EntryForm: { entryId?: string; vehicleId?: string };
   EntryDetail: { entryId: string };
+  Vehicles: undefined;
+  Reports: undefined;
 };
 
 export type MainTabParamList = {
   Dashboard: undefined;
-  CheckIn: undefined;
-  Vehicles: undefined;
   History: undefined;
   Forecast: undefined;
-  Reports: undefined;
   Settings: undefined;
 };

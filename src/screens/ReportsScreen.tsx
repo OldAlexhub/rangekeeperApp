@@ -8,8 +8,10 @@ import {
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { RootStackParamList } from '../types';
 
 import { Vehicle, RangeEntry } from '../types';
 import { Colors, Spacing, Typography, Radius } from '../theme/colors';
@@ -20,6 +22,7 @@ import { getAllVehicles, getAllEntries } from '../utils/storage';
 import { shareCsv, shareJson, shareTextReport } from '../utils/export';
 
 export function ReportsScreen() {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [entries, setEntries] = useState<RangeEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -65,7 +68,13 @@ export function ReportsScreen() {
   if (loading) {
     return (
       <SafeAreaView style={styles.screen}>
-        <View style={styles.header}><Text style={styles.title}>Reports</Text></View>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+            <Text style={styles.backBtnText}>‹ Back</Text>
+          </TouchableOpacity>
+          <Text style={styles.title}>Reports</Text>
+          <View style={{ width: 60 }} />
+        </View>
         <View style={styles.center}><Text style={styles.muted}>Loading...</Text></View>
       </SafeAreaView>
     );
@@ -76,7 +85,11 @@ export function ReportsScreen() {
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+          <Text style={styles.backBtnText}>‹ Back</Text>
+        </TouchableOpacity>
         <Text style={styles.title}>Reports</Text>
+        <View style={{ width: 60 }} />
       </View>
 
       <ScrollView
@@ -191,11 +204,16 @@ export function ReportsScreen() {
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: Colors.background },
   header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: Spacing.md,
     paddingVertical: Spacing.md,
     borderBottomWidth: 1,
     borderBottomColor: Colors.border,
   },
+  backBtn: { paddingVertical: Spacing.xs + 2, paddingRight: Spacing.sm },
+  backBtnText: { ...Typography.body, color: Colors.primary },
   title: { ...Typography.h3, color: Colors.textPrimary },
   scroll: { padding: Spacing.md, paddingBottom: Spacing.xxl, gap: Spacing.md },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },

@@ -266,6 +266,20 @@ export function DashboardScreen() {
             onPress={() => navigation.navigate('EntryForm', {})}
             style={styles.primaryAction}
           />
+          <View style={styles.secondaryActions}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Vehicles')}
+              style={styles.quickActionChip}>
+              <Text style={styles.quickActionIcon}>🚗</Text>
+              <Text style={styles.quickActionLabel}>Vehicles</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Reports')}
+              style={styles.quickActionChip}>
+              <Text style={styles.quickActionIcon}>📤</Text>
+              <Text style={styles.quickActionLabel}>Export</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* Disclaimer */}
@@ -458,6 +472,24 @@ const styles = StyleSheet.create({
   primaryAction: {
     width: '100%',
   },
+  secondaryActions: {
+    flexDirection: 'row',
+    gap: Spacing.sm,
+  },
+  quickActionChip: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: Spacing.xs,
+    paddingVertical: Spacing.sm,
+    borderRadius: Radius.md,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    backgroundColor: Colors.surface,
+  },
+  quickActionIcon: { fontSize: 16 },
+  quickActionLabel: { ...Typography.bodySmall, color: Colors.textSecondary },
   disclaimer: {
     ...Typography.caption,
     color: Colors.textMuted,

@@ -6,16 +6,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { DashboardScreen } from '../screens/DashboardScreen';
-import { DailyCheckInScreen } from '../screens/DailyCheckInScreen';
-import { VehiclesScreen } from '../screens/VehiclesScreen';
 import { HistoryScreen } from '../screens/HistoryScreen';
 import { ForecastScreen } from '../screens/ForecastScreen';
-import { ReportsScreen } from '../screens/ReportsScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
+import { VehiclesScreen } from '../screens/VehiclesScreen';
+import { ReportsScreen } from '../screens/ReportsScreen';
 import { VehicleFormScreen } from '../screens/VehicleFormScreen';
 import { EntryFormScreen } from '../screens/EntryFormScreen';
 
-import { Colors, Spacing } from '../theme/colors';
+import { Colors } from '../theme/colors';
 import { RootStackParamList, MainTabParamList } from '../types';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
@@ -66,14 +65,6 @@ function MainTabs() {
         }}
       />
       <Tab.Screen
-        name="CheckIn"
-        component={DailyCheckInScreen}
-        options={{
-          tabBarIcon: ({ focused }) => <TabIcon icon="+" focused={focused} />,
-          tabBarLabel: ({ focused }) => <TabLabel label="Check-In" focused={focused} />,
-        }}
-      />
-      <Tab.Screen
         name="History"
         component={HistoryScreen}
         options={{
@@ -87,22 +78,6 @@ function MainTabs() {
         options={{
           tabBarIcon: ({ focused }) => <TabIcon icon="📈" focused={focused} />,
           tabBarLabel: ({ focused }) => <TabLabel label="Forecast" focused={focused} />,
-        }}
-      />
-      <Tab.Screen
-        name="Vehicles"
-        component={VehiclesScreen}
-        options={{
-          tabBarIcon: ({ focused }) => <TabIcon icon="🚗" focused={focused} />,
-          tabBarLabel: ({ focused }) => <TabLabel label="Vehicles" focused={focused} />,
-        }}
-      />
-      <Tab.Screen
-        name="Reports"
-        component={ReportsScreen}
-        options={{
-          tabBarIcon: ({ focused }) => <TabIcon icon="📤" focused={focused} />,
-          tabBarLabel: ({ focused }) => <TabLabel label="Reports" focused={focused} />,
         }}
       />
       <Tab.Screen
@@ -136,6 +111,14 @@ export function AppNavigator() {
             name="EntryForm"
             component={EntryFormScreen}
             options={{ presentation: 'modal' }}
+          />
+          <Stack.Screen
+            name="Vehicles"
+            component={VehiclesScreen}
+          />
+          <Stack.Screen
+            name="Reports"
+            component={ReportsScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>

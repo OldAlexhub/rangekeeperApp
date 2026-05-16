@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { AppNavigator } from './src/navigation/AppNavigator';
+import { SplashScreen } from './src/components/SplashScreen';
 import { Colors } from './src/theme/colors';
 
 function App(): React.JSX.Element {
+  const [splashDone, setSplashDone] = useState(false);
+
   return (
     <>
       <StatusBar
@@ -12,6 +15,9 @@ function App(): React.JSX.Element {
         translucent={false}
       />
       <AppNavigator />
+      {!splashDone && (
+        <SplashScreen onDone={() => setSplashDone(true)} />
+      )}
     </>
   );
 }

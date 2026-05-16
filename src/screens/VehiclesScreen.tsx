@@ -79,7 +79,11 @@ export function VehiclesScreen() {
     return (
       <SafeAreaView style={styles.screen}>
         <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+            <Text style={styles.backBtnText}>‹ Back</Text>
+          </TouchableOpacity>
           <Text style={styles.title}>Vehicles</Text>
+          <View style={{ width: 60 }} />
         </View>
         <View style={styles.center}>
           <Text style={styles.loadingText}>Loading...</Text>
@@ -91,6 +95,9 @@ export function VehiclesScreen() {
   return (
     <SafeAreaView style={styles.screen}>
       <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+          <Text style={styles.backBtnText}>‹ Back</Text>
+        </TouchableOpacity>
         <Text style={styles.title}>Vehicles</Text>
         <TouchableOpacity
           onPress={() => navigation.navigate('VehicleForm', {})}
@@ -195,6 +202,8 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.border,
   },
   title: { ...Typography.h3, color: Colors.textPrimary },
+  backBtn: { paddingVertical: Spacing.xs + 2, paddingRight: Spacing.sm },
+  backBtnText: { ...Typography.body, color: Colors.primary },
   addBtn: {
     paddingHorizontal: Spacing.md,
     paddingVertical: Spacing.xs + 2,
