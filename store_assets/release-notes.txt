@@ -1,0 +1,10 @@
+Initial release of RangeKeeper EV:
+
+- Add EV profiles with manufacturer rated range
+- Log daily range check-ins at any battery percentage
+- Estimate 100% range equivalent from partial readings
+- Track range changes over time
+- View simple local trend forecasts
+- Export CSV, JSON, and text reports
+- Set optional daily local reminders
+- Offline-first with no login or backend required

@@ -1,0 +1,8 @@
+1. Track your EV's latest range estimate
+2. Log range at any battery percentage
+3. Compare estimated full range to rated range
+4. Review range history over time
+5. View simple local forecasts
+6. Export your data anytime
+7. Set optional daily reminders
+8. Manage vehicles and privacy settings

@@ -1,0 +1,10 @@
+RangeKeeper EV is private and offline.
+
+- No data collected by the developer
+- No account required
+- No backend or cloud sync
+- No ads or analytics
+- No data shared with third parties
+- All data stored locally on your device
+- Notification permission used only for optional local daily reminders
+- Delete all data via Settings > Reset All Data or by uninstalling the app

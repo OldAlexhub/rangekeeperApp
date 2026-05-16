@@ -1,0 +1,38 @@
+RangeKeeper EV helps EV owners track displayed range over time with simple daily check-ins.
+
+Add your EV, enter the manufacturer rated 100% range, then log what your vehicle shows at any battery percentage. RangeKeeper EV estimates the full-range equivalent, compares it to the rated range, and helps you understand whether your range estimate is trending up, stable, or down.
+
+FEATURES
+
+- Create one or more EV profiles
+- Save manufacturer rated range
+- Log daily battery percentage and displayed range
+- Estimate 100% range equivalent from partial charge readings
+- Track estimated range loss or above-rated range
+- View range history over time
+- See simple local forecasts based on your data
+- Export CSV, JSON, and text reports
+- Optional daily reminder to log your range
+- Offline-first and private
+- No login required
+- No backend or cloud sync
+- No ads
+
+PRIVATE AND OFFLINE
+
+All data stays on your device. No account is required. No data is sent to any server. No analytics. No ads.
+
+HOW IT WORKS
+
+1. Add your EV and enter the manufacturer rated 100% range.
+2. Log your battery percentage and the range shown on your vehicle.
+3. RangeKeeper EV calculates the estimated 100% equivalent.
+4. View trends and forecasts over time.
+
+FORECASTING
+
+The forecast screen uses simple linear regression over your logged entries. It estimates possible future range trends based on your data. At least 3 check-ins are needed. The confidence label reflects how many entries you have logged. Forecasts are estimates only.
+
+IMPORTANT DISCLAIMER
+
+RangeKeeper EV does not diagnose battery health and does not measure actual battery capacity. Estimates are based on manually entered data. Actual range may vary based on temperature, driving style, terrain, tire condition, charging behavior, vehicle software, and manufacturer range calculation methods. This app is for informational use only.
