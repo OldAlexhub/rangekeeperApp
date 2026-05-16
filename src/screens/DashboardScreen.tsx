@@ -176,7 +176,7 @@ export function DashboardScreen() {
             <Text style={styles.emptyCardSub}>Add your first range check-in to start tracking.</Text>
             <Button
               label="Add First Check-In"
-              onPress={() => navigation.navigate('Main' as any)}
+              onPress={() => navigation.navigate('EntryForm', {})}
               style={{ marginTop: Spacing.md }}
             />
           </Card>

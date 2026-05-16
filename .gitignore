@@ -56,6 +56,12 @@ yarn-error.log
 # Bundle artifact
 *.jsbundle
 
+# Release signing - NEVER commit these
+android/keystore/rangekeeper-release.keystore
+android/keystore/keystore.properties
+android/keystore/*.keystore
+android/keystore/*.properties
+
 # Ruby / CocoaPods
 **/Pods/
 /vendor/bundle/

@@ -247,7 +247,7 @@ export function HistoryScreen() {
               </React.Fragment>
             );
           })}
-          <Text style={styles.totalCount}>{filtered.length} entry{filtered.length !== 1 ? 'ies' : 'y'}</Text>
+          <Text style={styles.totalCount}>{filtered.length} {filtered.length !== 1 ? 'entries' : 'entry'}</Text>
         </ScrollView>
       )}
     </SafeAreaView>
