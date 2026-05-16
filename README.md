@@ -1,97 +1,314 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# RangeKeeper EV
 
-# Getting Started
+Track your EV range. Understand the trend.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+RangeKeeper EV is a private, offline EV range journal that helps EV owners track displayed range over time, estimate range changes, and forecast possible future range trends based on manually entered data.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Features
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- Create one or more EV profiles with manufacturer rated range
+- Log daily battery percentage and displayed range readings
+- Estimate 100% range equivalent from any partial charge
+- Compare estimates to manufacturer rated range
+- Track estimated range change over time
+- View simple local trend forecasts
+- Export data as CSV, JSON, or text summary report
+- Optional daily local reminders
+- Offline-first with no login, no backend, and no ads
 
-```sh
-# Using npm
+---
+
+## Offline-first
+
+All data is manually entered and stored locally on the device using AsyncStorage. No internet connection is required. No data is transmitted anywhere.
+
+---
+
+## No login required
+
+The app is personal and device-local. It does not require an account, email, phone number, or any form of authentication.
+
+---
+
+## No backend
+
+All calculations, forecasting, storage, exports, and reminders run entirely on the device. There is no server, no cloud database, and no remote API.
+
+---
+
+## Local storage
+
+Data is stored using React Native AsyncStorage. It includes:
+
+- Vehicle profiles
+- Range check-in entries
+- App settings
+- Reminder preferences
+
+---
+
+## Daily reminders
+
+The app can send an optional local daily notification to remind you to log your range. You choose the time. The notification uses your active vehicle name. Notification permission is requested only when you enable reminders. You can disable reminders at any time from Settings.
+
+---
+
+## Forecasting
+
+The forecast screen uses simple linear regression over your logged entries to estimate possible future range trends. The forecast uses estimated full range values over time. At least 3 entries are required. Confidence labels (Low, Medium, Higher) reflect the number of entries. Forecasts are estimates only and do not guarantee future range.
+
+---
+
+## Disclaimer
+
+RangeKeeper EV is not a battery diagnostic tool and does not measure actual battery capacity. Estimates are based on manually entered data. Actual EV range may vary due to temperature, driving style, terrain, tire condition, charging habits, vehicle software, and manufacturer range calculation methods. This app is for informational use only.
+
+---
+
+## How to run the app (development)
+
+### Prerequisites
+
+- Node.js 22 or later
+- Android Studio with Android SDK
+- Java (bundled with Android Studio)
+- React Native CLI
+
+### Install dependencies
+
+```
+cd rangekeeper
+npm install
+```
+
+### Start Metro bundler
+
+```
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+### Run on Android
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+```
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+---
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## How to build debug APK
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```
+cd rangekeeper/android
+./gradlew assembleDebug
 ```
 
-Then, and every time you update your native dependencies, run:
+Output: `rangekeeper/android/app/build/outputs/apk/debug/app-debug.apk`
 
-```sh
-bundle exec pod install
+---
+
+## How to build release
+
+Use `release.py` from the parent directory. See release.py section below.
+
+Manual release build:
+
+```
+cd rangekeeper/android
+./gradlew bundleRelease
+./gradlew assembleRelease
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Output APK: `android/app/build/outputs/apk/release/app-release.apk`
+Output AAB: `android/app/build/outputs/bundle/release/app-release.aab`
 
-```sh
-# Using npm
-npm run ios
+---
 
-# OR using Yarn
-yarn ios
+## How to use release.py
+
+`release.py` is located in the parent directory outside the rangekeeper app folder.
+
+### Check environment
+
+```
+python release.py --check-env
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Checks Java, adb, keytool, and project structure.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+### Generate signing key only
 
-## Step 3: Modify your app
+```
+python release.py --generate-key-only
+```
 
-Now that you have successfully run the app, let's make changes!
+Creates the release keystore and signing properties without building.
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Full release build
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+```
+python release.py
+```
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+Builds the release APK and AAB, captures screenshots if an emulator is running, and copies all assets to the releases folder.
 
-## Congratulations! :tada:
+### Skip screenshot capture
 
-You've successfully run and modified your React Native App. :partying_face:
+```
+python release.py --skip-screenshots
+```
 
-### Now what?
+### Screenshots only (no build)
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+```
+python release.py --screenshots-only
+```
 
-# Troubleshooting
+### Skip the Gradle build
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+```
+python release.py --skip-build
+```
 
-# Learn More
+### Clean before build
 
-To learn more about React Native, take a look at the following resources:
+```
+python release.py --clean
+```
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+---
+
+## How to check environment
+
+```
+python release.py --check-env
+```
+
+This checks:
+- Java installation
+- Android SDK location
+- adb availability
+- keytool availability
+- Gradle wrapper presence
+- assets/logo.png presence
+
+---
+
+## How to generate signing key only
+
+```
+python release.py --generate-key-only
+```
+
+This generates:
+- `rangekeeper/android/keystore/rangekeeper-release.keystore`
+- `rangekeeper/android/keystore/keystore.properties`
+
+---
+
+## Keystore backup warning
+
+The release keystore is required to update the app on Google Play. If you lose it, you cannot publish updates under the same listing. Back up these files immediately after generation:
+
+- `rangekeeper/android/keystore/rangekeeper-release.keystore`
+- `rangekeeper/android/keystore/keystore.properties`
+
+Store them in a secure location separate from the project repository. Never commit them to version control.
+
+---
+
+## How to capture screenshots
+
+Screenshots are captured interactively during `release.py`. You are prompted to navigate to each screen, then press Enter to capture.
+
+You can also run screenshot capture separately:
+
+```
+python release.py --screenshots-only
+```
+
+Requires a connected Android device or running emulator with adb available and the app already running.
+
+---
+
+## Google Play upload notes
+
+1. Run `python release.py` to generate the signed AAB file.
+2. The AAB is located at `releases/builds/RangeKeeperEV-release.aab`.
+3. Upload the AAB to Google Play Console under Production or Internal Testing track.
+4. Fill in the store listing using the files in `releases/store-assets/`.
+5. Review data safety using `releases/store-assets/data-safety-notes.md`.
+6. Set app category to Auto and Vehicles or Tools.
+7. Upload screenshots from `releases/screenshots/`.
+8. Set the app as paid in the Google Play pricing section.
+9. Complete the content rating questionnaire.
+
+---
+
+## Troubleshooting
+
+### App crashes on launch
+
+- Check that all npm packages are installed: `npm install`
+- Confirm Java is detected: `python release.py --check-env`
+
+### Gradle build fails
+
+- Make sure Android Studio is installed with SDK
+- Confirm JAVA_HOME is set or Android Studio JBR is detected automatically by release.py
+- Run `cd rangekeeper/android && gradlew.bat clean` on Windows or `./gradlew clean` on Mac or Linux
+
+### Keystore errors
+
+- Run `python release.py --generate-key-only` to create the keystore
+- Confirm `android/keystore/keystore.properties` exists and has correct values
+
+### adb not found
+
+- Add Android SDK platform-tools to your PATH
+- Default path on Windows: `C:\Users\<username>\AppData\Local\Android\Sdk\platform-tools`
+
+### Notifications not working
+
+- Enable notification permission in device Settings for RangeKeeper EV
+- Enable reminders in the app Settings screen
+
+### Screenshots not captured
+
+- Ensure adb is available and a device or emulator is connected
+- Run `adb devices` to confirm a device is listed
+
+---
+
+## Store asset preparation notes
+
+All store assets are in the `store_assets/` folder inside the project and copied to `releases/store-assets/` by release.py.
+
+Files included:
+- store-listing.md
+- short-description.txt
+- full-description.txt
+- promo-text.txt
+- release-notes.txt
+- screenshot-captions.txt
+- data-safety-notes.md
+- privacy-summary.txt
+- feature-graphic-notes.md
+
+Screenshot files are saved to `releases/screenshots/` by release.py.
+
+App icon and branding are copied to `releases/branding/`.
+
+---
+
+## Package details
+
+- App name: RangeKeeper EV
+- Package: com.oldalexhub.rangekeeper
+- Developer: Old Alex Hub
+- Platform: Android
+- Framework: Bare React Native
+- Storage: AsyncStorage (local only)
+- Backend: None
+- Internet: Not required
