@@ -1,0 +1,144 @@
+import React from 'react';
+import { View, Text, StyleSheet, Platform } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import { DashboardScreen } from '../screens/DashboardScreen';
+import { DailyCheckInScreen } from '../screens/DailyCheckInScreen';
+import { VehiclesScreen } from '../screens/VehiclesScreen';
+import { HistoryScreen } from '../screens/HistoryScreen';
+import { ForecastScreen } from '../screens/ForecastScreen';
+import { ReportsScreen } from '../screens/ReportsScreen';
+import { SettingsScreen } from '../screens/SettingsScreen';
+import { VehicleFormScreen } from '../screens/VehicleFormScreen';
+import { EntryFormScreen } from '../screens/EntryFormScreen';
+
+import { Colors, Spacing } from '../theme/colors';
+import { RootStackParamList, MainTabParamList } from '../types';
+
+const Tab = createBottomTabNavigator<MainTabParamList>();
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+function TabIcon({ icon, focused }: { icon: string; focused: boolean }) {
+  return (
+    <Text style={{ fontSize: 20, opacity: focused ? 1 : 0.5 }}>{icon}</Text>
+  );
+}
+
+function TabLabel({ label, focused }: { label: string; focused: boolean }) {
+  return (
+    <Text
+      style={{
+        fontSize: 10,
+        color: focused ? Colors.tabActive : Colors.tabInactive,
+        fontWeight: focused ? '600' : '400',
+        marginTop: 2,
+      }}>
+      {label}
+    </Text>
+  );
+}
+
+function MainTabs() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Dashboard"
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: Colors.tabBar,
+          borderTopColor: Colors.tabBarBorder,
+          borderTopWidth: 1,
+          height: Platform.OS === 'android' ? 60 : 80,
+          paddingBottom: Platform.OS === 'android' ? 8 : 20,
+          paddingTop: 8,
+        },
+        tabBarShowLabel: true,
+      }}>
+      <Tab.Screen
+        name="Dashboard"
+        component={DashboardScreen}
+        options={{
+          tabBarIcon: ({ focused }) => <TabIcon icon="⚡" focused={focused} />,
+          tabBarLabel: ({ focused }) => <TabLabel label="Dashboard" focused={focused} />,
+        }}
+      />
+      <Tab.Screen
+        name="CheckIn"
+        component={DailyCheckInScreen}
+        options={{
+          tabBarIcon: ({ focused }) => <TabIcon icon="+" focused={focused} />,
+          tabBarLabel: ({ focused }) => <TabLabel label="Check-In" focused={focused} />,
+        }}
+      />
+      <Tab.Screen
+        name="History"
+        component={HistoryScreen}
+        options={{
+          tabBarIcon: ({ focused }) => <TabIcon icon="📋" focused={focused} />,
+          tabBarLabel: ({ focused }) => <TabLabel label="History" focused={focused} />,
+        }}
+      />
+      <Tab.Screen
+        name="Forecast"
+        component={ForecastScreen}
+        options={{
+          tabBarIcon: ({ focused }) => <TabIcon icon="📈" focused={focused} />,
+          tabBarLabel: ({ focused }) => <TabLabel label="Forecast" focused={focused} />,
+        }}
+      />
+      <Tab.Screen
+        name="Vehicles"
+        component={VehiclesScreen}
+        options={{
+          tabBarIcon: ({ focused }) => <TabIcon icon="🚗" focused={focused} />,
+          tabBarLabel: ({ focused }) => <TabLabel label="Vehicles" focused={focused} />,
+        }}
+      />
+      <Tab.Screen
+        name="Reports"
+        component={ReportsScreen}
+        options={{
+          tabBarIcon: ({ focused }) => <TabIcon icon="📤" focused={focused} />,
+          tabBarLabel: ({ focused }) => <TabLabel label="Reports" focused={focused} />,
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ focused }) => <TabIcon icon="⚙️" focused={focused} />,
+          tabBarLabel: ({ focused }) => <TabLabel label="Settings" focused={focused} />,
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export function AppNavigator() {
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: Colors.background },
+          }}>
+          <Stack.Screen name="Main" component={MainTabs} />
+          <Stack.Screen
+            name="VehicleForm"
+            component={VehicleFormScreen}
+            options={{ presentation: 'modal' }}
+          />
+          <Stack.Screen
+            name="EntryForm"
+            component={EntryFormScreen}
+            options={{ presentation: 'modal' }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+}
