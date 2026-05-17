@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { HistoryScreen } from '../screens/HistoryScreen';
@@ -41,6 +41,9 @@ function TabLabel({ label, focused }: { label: string; focused: boolean }) {
 }
 
 function MainTabs() {
+  const insets = useSafeAreaInsets();
+  const bottomInset = insets.bottom;
+
   return (
     <Tab.Navigator
       initialRouteName="Dashboard"
@@ -50,8 +53,8 @@ function MainTabs() {
           backgroundColor: Colors.tabBar,
           borderTopColor: Colors.tabBarBorder,
           borderTopWidth: 1,
-          height: Platform.OS === 'android' ? 60 : 80,
-          paddingBottom: Platform.OS === 'android' ? 8 : 20,
+          height: (Platform.OS === 'android' ? 60 : 80) + bottomInset,
+          paddingBottom: (Platform.OS === 'android' ? 8 : 20) + bottomInset,
           paddingTop: 8,
         },
         tabBarShowLabel: true,
