@@ -18,6 +18,7 @@ import { Button } from '../components/Button';
 import { StatusBadge } from '../components/StatusBadge';
 import { EmptyState } from '../components/EmptyState';
 import { LineChart } from '../components/LineChart';
+import { AdBanner } from '../components/AdBanner';
 import {
   getActiveVehicle,
   getLatestEntryForVehicle,
@@ -128,6 +129,9 @@ export function DashboardScreen() {
           <Text style={styles.appName}>RangeKeeper EV</Text>
           <Text style={styles.tagline}>Track your EV range. Understand the trend.</Text>
         </View>
+        <View style={styles.emptyTopAd}>
+          <AdBanner placement="dashboard" />
+        </View>
         <EmptyState
           icon="⚡"
           title="Welcome to RangeKeeper EV"
@@ -149,6 +153,8 @@ export function DashboardScreen() {
         <View style={styles.header}>
           <Text style={styles.appName}>RangeKeeper EV</Text>
         </View>
+
+        <AdBanner placement="dashboard" />
 
         {/* Active Vehicle Card */}
         <Card style={styles.vehicleCard}>
@@ -317,6 +323,9 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: Spacing.lg,
     paddingBottom: Spacing.md,
+  },
+  emptyTopAd: {
+    paddingHorizontal: Spacing.md,
   },
   appName: {
     ...Typography.h2,

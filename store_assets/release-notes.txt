@@ -7,4 +7,5 @@ Initial release of RangeKeeper EV:
 - View simple local trend forecasts
 - Export CSV, JSON, and text reports
 - Set optional daily local reminders
-- Offline-first with no login or backend required
+- Offline-first range tracking with no login or backend required
+- Carefully placed banner ads outside the core logging flow

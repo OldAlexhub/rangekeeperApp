@@ -11,11 +11,12 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { RootStackParamList, Vehicle, RangeEntry, ComputedEntry } from '../types';
+import { RootStackParamList, Vehicle, ComputedEntry } from '../types';
 import { Colors, Spacing, Typography, Radius } from '../theme/colors';
 import { Card } from '../components/Card';
 import { StatusBadge } from '../components/StatusBadge';
 import { EmptyState } from '../components/EmptyState';
+import { AdBanner } from '../components/AdBanner';
 import {
   getAllVehicles,
   getAllEntries,
@@ -102,6 +103,10 @@ export function HistoryScreen() {
           style={styles.addBtn}>
           <Text style={styles.addBtnText}>+ Log</Text>
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.topAd}>
+        <AdBanner placement="history" />
       </View>
 
       {vehicles.length > 1 && (
@@ -233,6 +238,11 @@ export function HistoryScreen() {
 
                   <View style={styles.entryActions}>
                     <TouchableOpacity
+                      onPress={() => navigation.navigate('EntryDetail', { entryId: entry.id })}
+                      style={[styles.actionBtn, styles.actionBtnPrimary]}>
+                      <Text style={styles.actionBtnPrimaryText}>Analyze</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
                       onPress={() => navigation.navigate('EntryForm', { entryId: entry.id })}
                       style={styles.actionBtn}>
                       <Text style={styles.actionBtnText}>Edit</Text>
@@ -276,6 +286,10 @@ const styles = StyleSheet.create({
   },
   addBtnText: { ...Typography.bodySmall, color: Colors.primary, fontWeight: '600' },
   filterScroll: { maxHeight: 52 },
+  topAd: {
+    paddingHorizontal: Spacing.md,
+    paddingTop: Spacing.xs,
+  },
   filterContent: {
     paddingHorizontal: Spacing.md,
     paddingVertical: Spacing.sm,
@@ -326,6 +340,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.surface,
   },
   actionBtnText: { ...Typography.caption, color: Colors.textSecondary },
+  actionBtnPrimary: { borderColor: Colors.primary, backgroundColor: Colors.primaryMuted },
+  actionBtnPrimaryText: { ...Typography.caption, color: Colors.primary, fontWeight: '600' },
   actionBtnDelete: { borderColor: Colors.error },
   actionBtnDeleteText: { ...Typography.caption, color: Colors.error },
   totalCount: {

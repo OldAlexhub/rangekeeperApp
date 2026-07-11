@@ -16,6 +16,7 @@ import { Button } from '../components/Button';
 import { StatusBadge } from '../components/StatusBadge';
 import { EmptyState } from '../components/EmptyState';
 import { LineChart } from '../components/LineChart';
+import { AdBanner } from '../components/AdBanner';
 import {
   getActiveVehicle,
   getEntriesForVehicle,
@@ -75,6 +76,9 @@ export function ForecastScreen() {
     return (
       <SafeAreaView style={styles.screen}>
         <View style={styles.header}><Text style={styles.title}>Forecast</Text></View>
+        <View style={styles.topAd}>
+          <AdBanner placement="forecast" />
+        </View>
         <EmptyState
           icon="📈"
           title="No vehicle selected"
@@ -90,6 +94,9 @@ export function ForecastScreen() {
     return (
       <SafeAreaView style={styles.screen}>
         <View style={styles.header}><Text style={styles.title}>Forecast</Text></View>
+        <View style={styles.topAd}>
+          <AdBanner placement="forecast" />
+        </View>
         <EmptyState
           icon="📊"
           title="Not enough data"
@@ -128,6 +135,10 @@ export function ForecastScreen() {
 
         <View style={styles.header}>
           <Text style={styles.title}>Forecast</Text>
+        </View>
+
+        <View style={styles.topAd}>
+          <AdBanner placement="forecast" />
         </View>
 
         {/* Vehicle Header */}
@@ -235,6 +246,10 @@ const styles = StyleSheet.create({
   },
   title: { ...Typography.h3, color: Colors.textPrimary },
   scroll: { paddingBottom: Spacing.xxl },
+  topAd: {
+    paddingHorizontal: Spacing.md,
+    paddingTop: Spacing.xs,
+  },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   muted: { ...Typography.body, color: Colors.textMuted },
   progressHint: {

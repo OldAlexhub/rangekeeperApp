@@ -9,13 +9,15 @@
 
 ## Summary
 
-RangeKeeper EV is a private, offline EV range tracking app. It stores all data locally on your device. It does not collect, transmit, or share any personal data. It does not require an account and has no backend server.
+RangeKeeper EV is an EV range tracking app. It stores your vehicle and range tracking data locally on your device. The developer does not receive your vehicle profiles, range check-ins, reports, reminders, or settings. The app displays ads through Google AdMob, which may process certain device and ad-related data as described below.
 
 ---
 
 ## Data Collection
 
-RangeKeeper EV does not collect any personal information. The developer (Old Alex Hub) does not receive any data from users of this app.
+The developer (Old Alex Hub) does not receive your vehicle profiles, range check-ins, reports, reminders, or settings.
+
+RangeKeeper EV uses Google AdMob to show ads. Google AdMob may collect or process data such as device identifiers, advertising identifiers, IP address, approximate location inferred from IP address, diagnostics, and ad interaction data for ad delivery, fraud prevention, frequency capping, measurement, and personalization where allowed by your consent choices and applicable law.
 
 ---
 
@@ -34,7 +36,7 @@ This data is stored using React Native AsyncStorage on your device. It is not tr
 
 ## Internet Usage
 
-RangeKeeper EV does not require an internet connection. The app does not make any network requests. No data is sent to or received from any server.
+RangeKeeper EV can be used to save and review your range data without an account or app backend. Internet access is used to request and display ads from Google AdMob. Your locally saved range data is not uploaded to the developer's server.
 
 ---
 
@@ -46,6 +48,7 @@ RangeKeeper EV requests the following permissions:
 - **VIBRATE**: Used to allow notification vibration for reminders.
 - **RECEIVE_BOOT_COMPLETED**: Used to reschedule local reminders after the device restarts.
 - **SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM**: Used to schedule local reminders at the time you choose.
+- **INTERNET**: Used to request and display ads from Google AdMob.
 
 The app does not request location, contacts, camera, microphone, phone state, SMS, Bluetooth, or any account permissions.
 
@@ -69,21 +72,21 @@ RangeKeeper EV has no backend server. All calculations, storage, exports, foreca
 
 ---
 
-## No Analytics
+## No App Analytics
 
-RangeKeeper EV does not include analytics, crash reporting, or usage tracking of any kind.
+RangeKeeper EV does not include a separate app analytics or crash reporting service controlled by the developer. Google AdMob may process ad-related events for ad delivery, measurement, and fraud prevention.
 
 ---
 
-## No Advertising
+## Advertising
 
-RangeKeeper EV does not display ads and does not use any advertising SDKs.
+RangeKeeper EV displays ads using Google AdMob. Ads may be personalized or non-personalized depending on your region, consent choices, Google settings, and applicable law. AdMob is a third-party advertising service provided by Google.
 
 ---
 
 ## No Third-Party Sharing
 
-RangeKeeper EV does not share any data with third parties because no data leaves your device.
+The developer does not share your locally saved vehicle or range check-in data with third parties. Google AdMob may collect or process ad-related data as a third-party advertising provider.
 
 ---
 

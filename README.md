@@ -16,13 +16,14 @@ RangeKeeper EV is a private, offline EV range journal that helps EV owners track
 - View simple local trend forecasts
 - Export data as CSV, JSON, or text summary report
 - Optional daily local reminders
-- Offline-first with no login, no backend, and no ads
+- Offline-first range tracking with no login or backend
+- Carefully placed Google AdMob banner ads outside the core logging flow
 
 ---
 
 ## Offline-first
 
-All data is manually entered and stored locally on the device using AsyncStorage. No internet connection is required. No data is transmitted anywhere.
+All range tracking data is manually entered and stored locally on the device using AsyncStorage. Internet access is used to request and display ads from Google AdMob. Your locally saved range data is not uploaded to the developer's server.
 
 ---
 
@@ -34,7 +35,7 @@ The app is personal and device-local. It does not require an account, email, pho
 
 ## No backend
 
-All calculations, forecasting, storage, exports, and reminders run entirely on the device. There is no server, no cloud database, and no remote API.
+All calculations, forecasting, storage, exports, and reminders run entirely on the device. There is no app backend, cloud database, or remote API for your range tracking data.
 
 ---
 
@@ -311,4 +312,4 @@ App icon and branding are copied to `releases/branding/`.
 - Framework: Bare React Native
 - Storage: AsyncStorage (local only)
 - Backend: None
-- Internet: Not required
+- Internet: Used for Google AdMob ads

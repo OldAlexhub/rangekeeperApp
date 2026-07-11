@@ -33,13 +33,13 @@ EV, electric vehicle, range tracker, battery range, car logbook, vehicle tracker
 
 Suitable for all ages. No violence, mature content, user-generated public content, location sharing, or in-app purchases.
 
-## Paid App Positioning
+## Monetization Positioning
 
-RangeKeeper EV is a simple paid utility. Users pay once for a private, offline EV range tracker with no ads, no login, and no backend.
+RangeKeeper EV is a simple EV range tracker with no login and no backend for range data. Ads are placed carefully outside the core logging flow.
 
 ## Permissions Explanation for Store Listing
 
-Notification permission is used only for optional daily local reminders to log your range. No location, contacts, camera, microphone, account, or internet access is required.
+Notification permission is used only for optional daily local reminders to log your range. Internet access is used to request and display Google AdMob ads. No location, contacts, camera, microphone, or account permissions are required.
 
 ## What Not to Claim
 

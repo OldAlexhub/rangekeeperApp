@@ -1,4 +1,8 @@
 {
   "name": "rangekeeper",
-  "displayName": "RangeKeeper EV"
+  "displayName": "RangeKeeper EV",
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-7831002909037560~2870490310",
+    "delay_app_measurement_init": true
+  }
 }

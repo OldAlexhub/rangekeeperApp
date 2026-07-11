@@ -17,6 +17,7 @@ import { RootStackParamList, Vehicle, AppSettings, ReminderSettings } from '../t
 import { Colors, Spacing, Typography, Radius } from '../theme/colors';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
+import { AdBanner } from '../components/AdBanner';
 import {
   getAppSettings,
   updateAppSettings,
@@ -39,9 +40,11 @@ const DEVELOPER = 'Old Alex Hub';
 
 const PRIVACY_TEXT = `RangeKeeper EV is a private, offline EV range journal.
 
-This app does not collect, transmit, or share any personal data. All data you enter (vehicle profiles, range check-ins, settings, and reminders) is stored only on your device.
+This app stores your vehicle profiles, range check-ins, settings, and reminders locally on your device. The developer does not receive that range tracking data.
 
-The app does not require an account, does not use a backend server, does not use analytics, and does not display ads.
+The app does not require an account, does not use a backend server for your range data, and does not use app analytics.
+
+RangeKeeper EV displays ads through Google AdMob. AdMob may process device identifiers, advertising identifiers, IP address, diagnostics, and ad interaction data to deliver, limit, measure, and improve ads according to Google's policies and your consent choices where required.
 
 Notification permission is used only for optional local daily reminders. You can disable reminders at any time.
 
@@ -174,6 +177,8 @@ export function SettingsScreen() {
         contentContainerStyle={styles.scroll}
         showsVerticalScrollIndicator={false}>
 
+        <AdBanner placement="settings" />
+
         {/* Default Unit */}
         <Text style={styles.sectionLabel}>Preferences</Text>
         <Card style={styles.card}>
@@ -289,8 +294,9 @@ export function SettingsScreen() {
             <Text style={styles.privacyItem}>No data collected by developer</Text>
             <Text style={styles.privacyItem}>No account required</Text>
             <Text style={styles.privacyItem}>No backend or cloud sync</Text>
-            <Text style={styles.privacyItem}>No ads or analytics</Text>
-            <Text style={styles.privacyItem}>All data stored locally on your device</Text>
+            <Text style={styles.privacyItem}>No app analytics</Text>
+            <Text style={styles.privacyItem}>Range data stored locally on your device</Text>
+            <Text style={styles.privacyItem}>Ads served by Google AdMob</Text>
           </View>
         </Card>
 

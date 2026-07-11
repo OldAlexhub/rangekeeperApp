@@ -16,11 +16,11 @@ FEATURES
 - Offline-first and private
 - No login required
 - No backend or cloud sync
-- No ads
+- Ads placed carefully outside the core logging flow
 
 PRIVATE AND OFFLINE
 
-All data stays on your device. No account is required. No data is sent to any server. No analytics. No ads.
+Your vehicle profiles and range check-ins stay on your device. No account is required. RangeKeeper EV does not use a backend server for your range data and does not include app analytics. Ads are served by Google AdMob.
 
 HOW IT WORKS
 

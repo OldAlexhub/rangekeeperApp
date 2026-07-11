@@ -13,6 +13,7 @@ import { VehiclesScreen } from '../screens/VehiclesScreen';
 import { ReportsScreen } from '../screens/ReportsScreen';
 import { VehicleFormScreen } from '../screens/VehicleFormScreen';
 import { EntryFormScreen } from '../screens/EntryFormScreen';
+import { EntryDetailScreen } from '../screens/EntryDetailScreen';
 
 import { Colors } from '../theme/colors';
 import { RootStackParamList, MainTabParamList } from '../types';
@@ -114,6 +115,10 @@ export function AppNavigator() {
             name="EntryForm"
             component={EntryFormScreen}
             options={{ presentation: 'modal' }}
+          />
+          <Stack.Screen
+            name="EntryDetail"
+            component={EntryDetailScreen}
           />
           <Stack.Screen
             name="Vehicles"

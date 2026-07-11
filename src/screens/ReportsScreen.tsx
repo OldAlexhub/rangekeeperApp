@@ -18,6 +18,7 @@ import { Colors, Spacing, Typography, Radius } from '../theme/colors';
 import { Card } from '../components/Card';
 import { Button } from '../components/Button';
 import { EmptyState } from '../components/EmptyState';
+import { AdBanner } from '../components/AdBanner';
 import { getAllVehicles, getAllEntries } from '../utils/storage';
 import { shareCsv, shareJson, shareTextReport } from '../utils/export';
 
@@ -95,6 +96,8 @@ export function ReportsScreen() {
       <ScrollView
         contentContainerStyle={styles.scroll}
         showsVerticalScrollIndicator={false}>
+
+        <AdBanner placement="reports" />
 
         {/* Summary Stats */}
         <Card style={styles.statsCard} elevated>
@@ -188,6 +191,7 @@ export function ReportsScreen() {
             <Text style={styles.exportNote}>
               Exports use your device's share sheet. Data is not uploaded anywhere. All processing happens on your device.
             </Text>
+
           </>
         )}
 
